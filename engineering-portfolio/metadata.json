@@ -1,0 +1,6 @@
+{
+  "name": "Engineering Portfolio",
+  "description": "A minimalist brutalist terminal-style software engineering portfolio for Alex, featuring interactive command menus, live project logging, systems configuration, and technical logs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
