@@ -39,7 +39,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           {/* Image */}
           <div className="w-full h-56 brutalist-border relative overflow-hidden group">
             <img 
-              src={project.imageUrl} 
+              src={project.image_url} 
               alt={project.title} 
               className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 hover:brightness-100 transition-all duration-300"
               referrerPolicy="no-referrer"
@@ -65,9 +65,9 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               </div>
 
               <div className="flex gap-3">
-                {project.githubUrl && (
+                {project.github_url && (
                   <a 
-                    href={project.githubUrl} 
+                    href={project.github_url} 
                     target="_blank" 
                     rel="noreferrer"
                     className="border border-outline-variant hover:border-white p-2.5 text-on-surface-variant hover:text-white transition-colors flex items-center justify-center"
@@ -77,7 +77,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   </a>
                 )}
                 <a 
-                  href={project.demoUrl} 
+                  href={project.demo_url!} 
                   className="brutalist-btn px-4 py-2 text-xs font-semibold uppercase tracking-wider flex items-center gap-2"
                 >
                   <span>LIVE DEMO</span>

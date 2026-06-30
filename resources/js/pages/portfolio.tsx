@@ -5,20 +5,17 @@ import ContactModal from '@/components/ContactModal';
 import Navbar from '@/components/Navbar';
 import ProjectModal from '@/components/ProjectModal';
 import Terminal from '@/components/Terminal';
-import { 
-  HERO_DATA, 
-  ABOUT_DATA, 
-  EXPERIENCE_DATA, 
-  PROJECTS_DATA, 
-  STACK_CORES, 
-  STACK_FEATURED, 
-  STACK_BACKENDS, 
-  STACK_INFRASTRUCTURE, 
-  STACK_TOOLING 
-} from '@/data';
-import type { Project } from '@/types/portfolio';
+import type { HeroSettings, AboutSettings, ExperienceItem, Project, TechStackItem } from '@/types/portfolio';
 
-export default function App() {
+interface PortfolioProps {
+  hero: HeroSettings;
+  about: AboutSettings;
+  experiences: ExperienceItem[];
+  projects: Project[];
+  techStacks: TechStackItem[];
+}
+
+export default function App({ hero, about, experiences, projects, techStacks }: PortfolioProps) {
   const [activeSection, setActiveSection] = useState('hero');
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -84,18 +81,18 @@ obs.observer.unobserve(obs.el);
                 <div className="inline-flex items-center gap-2">
                   <span className="w-2.5 h-2.5 bg-white rounded-full animate-pulse"></span>
                   <span className="text-xs font-bold font-mono text-on-surface-variant uppercase tracking-widest">
-                    {HERO_DATA.tagline}
+                    {hero.tagline}
                   </span>
                 </div>
                 
                 <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight m-0 uppercase font-sans select-none">
-                  {HERO_DATA.headline}
+                  {hero.headline}
                   <br />
-                  <span className="text-[#8e9192]">{HERO_DATA.subheadline}</span>
+                  <span className="text-[#8e9192]">{hero.subheadline}</span>
                 </h1>
 
                 <p className="text-base sm:text-lg text-on-surface-variant max-w-xl font-mono leading-relaxed">
-                  {HERO_DATA.description}
+                  {hero.description}
                 </p>
 
                 <div className="flex flex-wrap gap-4 mt-4">
@@ -131,7 +128,7 @@ obs.observer.unobserve(obs.el);
                     CURRENT STATUS
                   </div>
                   <div className="text-xs font-mono text-white space-y-2 leading-relaxed">
-                    {HERO_DATA.status.map((item, index) => (
+                    {hero.status.map((item, index) => (
                       <p key={index}>&gt; {item}</p>
                     ))}
                   </div>
@@ -143,7 +140,7 @@ obs.observer.unobserve(obs.el);
                     CORE STACK
                   </div>
                   <div className="flex flex-wrap gap-2.5 font-mono text-xs text-secondary text-gray-300">
-                    {HERO_DATA.coreStack.map((item) => (
+                    {hero.core_stack.map((item) => (
                       <span key={item} className="mono-bracket">
                         {item}
                       </span>
@@ -160,14 +157,14 @@ obs.observer.unobserve(obs.el);
               {/* Header */}
               <div className="md:col-span-12 border-b border-outline-variant pb-6 mb-4">
                 <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-mono text-white">
-                  &gt; {ABOUT_DATA.header}
+                  &gt; {about.header}
                 </h2>
               </div>
 
               {/* About Narrative */}
               <div className="md:col-span-8 flex flex-col gap-6 md:pr-8">
                 <div className="text-sm sm:text-base text-on-surface-variant space-y-6 font-mono leading-relaxed">
-                  {ABOUT_DATA.paragraphs.map((p, index) => (
+                  {about.paragraphs.map((p, index) => (
                     <p key={index}>{p}</p>
                   ))}
                 </div>
@@ -175,10 +172,10 @@ obs.observer.unobserve(obs.el);
                 {/* Core Competencies */}
                 <div className="mt-8">
                   <h3 className="text-xs font-bold text-white mb-4 border-b border-outline-variant pb-2 uppercase tracking-widest font-mono">
-                    &gt; {ABOUT_DATA.competenciesHeader}
+                    &gt; {about.competencies_header}
                   </h3>
                   <ul className="font-mono text-xs text-on-surface-variant space-y-3">
-                    {ABOUT_DATA.competencies.map((comp) => (
+                    {about.competencies.map((comp) => (
                       <li key={comp} className="flex items-center gap-2">
                         <span className="text-white font-bold">*</span>
                         <span>{comp}</span>
@@ -200,22 +197,22 @@ obs.observer.unobserve(obs.el);
                   </div>
 
                   <div className="font-mono text-xs text-on-surface-variant leading-relaxed select-text">
-                    <p className="mb-1"><span className="font-bold text-white">location:</span> &quot;{ABOUT_DATA.sysConfig.location}&quot;</p>
-                    <p className="mb-1"><span className="font-bold text-white">timezone:</span> &quot;{ABOUT_DATA.sysConfig.timezone}&quot;</p>
-                    <p className="mb-1"><span className="font-bold text-white">status:</span> &quot;{ABOUT_DATA.sysConfig.status}&quot;</p>
+                    <p className="mb-1"><span className="font-bold text-white">location:</span> &quot;{about.sys_config_location}&quot;</p>
+                    <p className="mb-1"><span className="font-bold text-white">timezone:</span> &quot;{about.sys_config_timezone}&quot;</p>
+                    <p className="mb-1"><span className="font-bold text-white">status:</span> &quot;{about.sys_config_status}&quot;</p>
                     <p className="mb-1 font-bold text-white mt-3">languages:</p>
-                    {ABOUT_DATA.sysConfig.languages.map((lang) => (
+                    {about.sys_config_languages.map((lang) => (
                       <p key={lang} className="pl-4">&nbsp;&nbsp;- &quot;[ {lang} ]&quot;</p>
                     ))}
                     <p className="mb-1 font-bold text-white mt-3">frameworks:</p>
-                    {ABOUT_DATA.sysConfig.frameworks.map((fw) => (
+                    {about.sys_config_frameworks.map((fw) => (
                       <p key={fw} className="pl-4">&nbsp;&nbsp;- &quot;[ {fw} ]&quot;</p>
                     ))}
                   </div>
 
                   <div className="mt-6 pt-6 border-t border-outline-variant">
                     <img 
-                      src={ABOUT_DATA.concreteImage} 
+                      src={about.concrete_image} 
                       alt="Brutalist concrete architecture" 
                       className="w-full aspect-square object-cover grayscale opacity-75 hover:opacity-100 transition-opacity duration-300 brutalist-border"
                       referrerPolicy="no-referrer"
@@ -244,7 +241,7 @@ obs.observer.unobserve(obs.el);
 
               {/* Experience Items */}
               <div className="space-y-16 md:space-y-24 relative z-10">
-                {EXPERIENCE_DATA.map((item, index) => {
+                {experiences.map((item, index) => {
                   const isEven = index % 2 === 0;
 
                   return (
@@ -312,13 +309,13 @@ obs.observer.unobserve(obs.el);
               
               {/* Frontend Core items */}
               <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {STACK_CORES.map((core) => (
+                {techStacks.filter(t => t.type === 'core').map((core) => (
                   <div key={core.name} className="brutalist-border p-6 flex flex-col justify-between h-48 hover:bg-[#18181B] bg-[#0e0e10] transition-all duration-200">
                     <div className="flex justify-between items-start">
                       {core.name === 'React' && <Code className="h-6 w-6 text-gray-500" />}
                       {core.name === 'TypeScript' && <Braces className="h-6 w-6 text-gray-500" />}
                       {core.name === 'Next.js' && <Globe className="h-6 w-6 text-gray-500" />}
-                      <span className="text-xs font-mono mono-bracket text-on-surface-variant font-bold">{core.indexLabel}</span>
+                      <span className="text-xs font-mono mono-bracket text-on-surface-variant font-bold">{core.index_label}</span>
                     </div>
                     <div>
                       <h3 className="text-md font-bold font-mono text-white mb-1">{core.name}</h3>
@@ -329,25 +326,31 @@ obs.observer.unobserve(obs.el);
               </div>
 
               {/* Featured Tailwind CSS Card */}
-              <div className="md:col-span-4 brutalist-border p-6 flex flex-col justify-between h-full min-h-[300px] hover:bg-[#18181B] bg-[#0e0e10] transition-all duration-200">
-                <div className="flex justify-between items-start mb-6">
-                  <Palette className="h-8 w-8 text-gray-500" />
-                  <span className="text-xs font-mono mono-bracket text-on-surface-variant font-bold">{STACK_FEATURED.indexLabel}</span>
-                </div>
-                <div className="space-y-4 font-mono">
-                  <h3 className="text-xl font-bold text-white">{STACK_FEATURED.name}</h3>
-                  <p className="text-xs text-on-surface-variant">{STACK_FEATURED.description}</p>
-                  <ul className="text-xs text-gray-500 space-y-1.5 pt-2">
-                    {STACK_FEATURED.bullets.map((bullet) => (
-                      <li key={bullet}>* {bullet}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+              {(() => {
+                const featured = techStacks.find(t => t.type === 'featured')!;
+
+                return (
+                  <div className="md:col-span-4 brutalist-border p-6 flex flex-col justify-between h-full min-h-[300px] hover:bg-[#18181B] bg-[#0e0e10] transition-all duration-200">
+                    <div className="flex justify-between items-start mb-6">
+                      <Palette className="h-8 w-8 text-gray-500" />
+                      <span className="text-xs font-mono mono-bracket text-on-surface-variant font-bold">{featured.index_label}</span>
+                    </div>
+                    <div className="space-y-4 font-mono">
+                      <h3 className="text-xl font-bold text-white">{featured.name}</h3>
+                      <p className="text-xs text-on-surface-variant">{featured.description}</p>
+                      <ul className="text-xs text-gray-500 space-y-1.5 pt-2">
+                        {featured.bullets?.map((bullet) => (
+                          <li key={bullet}>* {bullet}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                );
+              })()}
 
               {/* Backend & Data section */}
               <div className="md:col-span-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-2">
-                {STACK_BACKENDS.map((item) => (
+                {techStacks.filter(t => t.type === 'backend').map((item) => (
                   <div key={item.name} className="brutalist-border p-6 flex flex-col justify-between h-40 hover:bg-[#18181B] bg-[#0e0e10] transition-all duration-200">
                     <div className="flex justify-between items-center mb-4">
                       <h3 className="text-md font-bold font-mono text-white">{item.name}</h3>
@@ -368,7 +371,7 @@ obs.observer.unobserve(obs.el);
                   <Globe className="h-5 w-5 text-gray-500" />
                 </h3>
                 <div className="space-y-3 font-mono text-xs">
-                  {STACK_INFRASTRUCTURE.map((infra) => (
+                  {techStacks.filter(t => t.type === 'infrastructure').map((infra) => (
                     <div key={infra.name} className="flex justify-between items-center group">
                       <span className="text-on-surface-variant group-hover:text-white transition-colors">{infra.name}</span>
                       <span className="text-gray-500">{infra.role}</span>
@@ -384,7 +387,7 @@ obs.observer.unobserve(obs.el);
                   <TerminalIcon className="h-5 w-5 text-gray-500" />
                 </h3>
                 <div className="space-y-3 font-mono text-xs">
-                  {STACK_TOOLING.map((tool) => (
+                  {techStacks.filter(t => t.type === 'tooling').map((tool) => (
                     <div key={tool.name} className="flex justify-between items-center group">
                       <span className="text-on-surface-variant group-hover:text-white transition-colors">{tool.name}</span>
                       <span className="text-gray-500">{tool.role}</span>
@@ -405,13 +408,13 @@ obs.observer.unobserve(obs.el);
               <div className="text-xs sm:text-sm font-mono text-on-surface-variant border-l border-outline-variant pl-4 space-y-1 py-1 leading-relaxed">
                 <p>&gt; SELECT * FROM system.projects WHERE status = &apos;production&apos;;</p>
                 <p className="text-gray-500">Executing query...</p>
-                <p className="text-gray-500">Showing {PROJECTS_DATA.length} results.</p>
+                <p className="text-gray-500">Showing {projects.length} results.</p>
               </div>
             </header>
 
             {/* Grid list of project articles */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {PROJECTS_DATA.map((project) => (
+              {projects.map((project) => (
                 <article 
                   key={project.id}
                   onClick={() => setSelectedProject(project)}
@@ -428,7 +431,7 @@ obs.observer.unobserve(obs.el);
                   {/* Cover Image Wrapper */}
                   <div className="w-full h-48 brutalist-border relative overflow-hidden group-hover:border-white transition-colors duration-300">
                     <img 
-                      src={project.imageUrl} 
+                      src={project.image_url} 
                       alt={project.title}
                       className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-500"
                       referrerPolicy="no-referrer"
@@ -501,6 +504,9 @@ obs.observer.unobserve(obs.el);
               setIsTerminalOpen(false);
               setIsContactOpen(true);
             }}
+            about={about}
+            experiences={experiences}
+            projects={projects}
           />
         )}
 

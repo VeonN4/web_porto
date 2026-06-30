@@ -1,14 +1,16 @@
 import { Terminal as TerminalIcon, X, Minimize2, Maximize2, ShieldAlert } from 'lucide-react';
 import React, { useState, useRef, useEffect } from 'react';
-import { ABOUT_DATA, EXPERIENCE_DATA, PROJECTS_DATA } from '@/data';
-import type { LogMessage } from '@/types/portfolio';
+import type { AboutSettings, ExperienceItem, Project, LogMessage } from '@/types/portfolio';
 
 interface TerminalProps {
   onClose: () => void;
   onContactTrigger: () => void;
+  about: AboutSettings;
+  experiences: ExperienceItem[];
+  projects: Project[];
 }
 
-export default function Terminal({ onClose, onContactTrigger }: TerminalProps) {
+export default function Terminal({ onClose, onContactTrigger, about, experiences, projects }: TerminalProps) {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState<LogMessage[]>([
     {
@@ -79,17 +81,17 @@ return;
         newLogs.push({
           text: `ALEX_DEV STATUS: ACTIVE
 ----------------------------------------
-${ABOUT_DATA.paragraphs.join('\n\n')}
+${about.paragraphs.join('\n\n')}
 
 Core Competencies:
-${ABOUT_DATA.competencies.map(c => ` * ${c}`).join('\n')}`,
+${about.competencies.map(c => ` * ${c}`).join('\n')}`,
           type: 'success',
           timestamp: new Date().toLocaleTimeString()
         });
         break;
 
       case 'exp': {
-        const expText = EXPERIENCE_DATA.map(item => (
+        const expText = experiences.map(item => (
           `[ ${item.role} ]
   Company : ${item.company}
   Period  : ${item.period}
@@ -132,7 +134,7 @@ Infrastructure & Tools:
         break;
 
       case 'projects': {
-        const projText = PROJECTS_DATA.map(p => (
+        const projText = projects.map(p => (
           `[ ${p.title} ]
   Status : ${p.status.toUpperCase()}
   About  : ${p.description}
@@ -153,13 +155,13 @@ ${projText}`,
       case 'sysconfig':
         newLogs.push({
           text: `--- sys_config.yml ---
-location: "${ABOUT_DATA.sysConfig.location}"
-timezone: "${ABOUT_DATA.sysConfig.timezone}"
-status: "${ABOUT_DATA.sysConfig.status}"
+location: "${about.sys_config_location}"
+timezone: "${about.sys_config_timezone}"
+status: "${about.sys_config_status}"
 languages:
-  - "[ ${ABOUT_DATA.sysConfig.languages.join(' ]"\n  - "[ ')} ]"
+  - "[ ${about.sys_config_languages.join(' ]"\n  - "[ ')} ]"
 frameworks:
-  - "[ ${ABOUT_DATA.sysConfig.frameworks.join(' ]"\n  - "[ ')} ]"`,
+  - "[ ${about.sys_config_frameworks.join(' ]"\n  - "[ ')} ]"`,
           type: 'info',
           timestamp: new Date().toLocaleTimeString()
         });
