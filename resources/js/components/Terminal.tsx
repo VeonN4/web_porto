@@ -28,7 +28,7 @@ export default function Terminal({ onClose, onContactTrigger, about, experiences
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isMatrixMode, setIsMatrixMode] = useState(false);
-  
+
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -143,7 +143,7 @@ Infrastructure & Tools:
         )).join('\n\n----------------------------------------\n\n');
 
         newLogs.push({
-          text: `DUMPING ACTIVE REPOSITORIES:
+          text: `DUMPING REPOSITORIES:
 ----------------------------------------
 ${projText}`,
           type: 'info',
@@ -154,7 +154,7 @@ ${projText}`,
 
       case 'sysconfig':
         newLogs.push({
-          text: `--- sys_config.yml ---
+          text: `--- config.yml ---
 location: "${about.sys_config_location}"
 timezone: "${about.sys_config_timezone}"
 status: "${about.sys_config_status}"
@@ -231,10 +231,10 @@ frameworks:
   };
 
   return (
-    <div 
+    <div
       className={`fixed z-50 bg-[#09090B] border-2 border-white/30 flex flex-col font-mono text-sm leading-relaxed transition-all duration-300 ${
-        isFullscreen 
-          ? 'inset-0 m-0' 
+        isFullscreen
+          ? 'inset-0 m-0'
           : 'bottom-4 right-4 left-4 md:left-auto md:w-[680px] h-[450px]'
       }`}
       id="terminal-console"
@@ -246,16 +246,16 @@ frameworks:
           <span className="text-white font-bold text-xs tracking-wider uppercase">core_systems_terminal.sh</span>
         </div>
         <div className="flex items-center gap-3">
-          <button 
-            onClick={() => setIsFullscreen(!isFullscreen)} 
+          <button
+            onClick={() => setIsFullscreen(!isFullscreen)}
             className="text-gray-400 hover:text-white transition-colors"
             title={isFullscreen ? 'Minimize' : 'Maximize'}
             id="terminal-maximize-btn"
           >
             {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
           </button>
-          <button 
-            onClick={onClose} 
+          <button
+            onClick={onClose}
             className="text-gray-400 hover:text-white transition-colors"
             title="Close Terminal"
             id="terminal-close-btn"
@@ -266,7 +266,7 @@ frameworks:
       </div>
 
       {/* Terminal log logs */}
-      <div 
+      <div
         className={`flex-grow p-4 overflow-y-auto font-mono select-text selection:bg-white selection:text-black ${
           isMatrixMode ? 'bg-[#051105] text-[#33ff33]' : 'bg-[#09090B] text-gray-300'
         }`}
@@ -274,15 +274,15 @@ frameworks:
       >
         <div className="space-y-3">
           {history.map((log, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className={`whitespace-pre-wrap ${
-                log.type === 'error' 
-                  ? 'text-red-400' 
-                  : log.type === 'success' 
-                  ? 'text-green-400 font-semibold' 
-                  : log.type === 'input' 
-                  ? 'text-white font-bold' 
+                log.type === 'error'
+                  ? 'text-red-400'
+                  : log.type === 'success'
+                  ? 'text-green-400 font-semibold'
+                  : log.type === 'input'
+                  ? 'text-white font-bold'
                   : 'text-gray-300'
               }`}
             >

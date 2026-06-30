@@ -74,7 +74,7 @@ class PortfolioSeeder extends Seeder
                 'title' => 'ZIE EXPERIENCE',
                 'description' => 'An online registration platform for the SMKN 1 Cianjur Open House event, built to handle hundreds of visiting students and guests.',
                 'image_url' => 'https://i.postimg.cc/Gtfyc2sk/Screenshot-2026-06-30-at-14-14-03-Open-House-Registration.png',
-                'status' => 'production',
+                'status' => 'unavailable',
                 'github_url' => '#',
                 'demo_url' => '#',
                 'details' => 'Developed with Next.js for a smooth user interface and integrated with Supabase for user authentication and managing registration data.',
