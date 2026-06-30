@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
 import { Terminal as TerminalIcon, X, Minimize2, Maximize2, ShieldAlert } from 'lucide-react';
-import { LogMessage } from '../types';
-import { HERO_DATA, ABOUT_DATA, EXPERIENCE_DATA, PROJECTS_DATA } from '../data';
+import React, { useState, useRef, useEffect } from 'react';
+import { ABOUT_DATA, EXPERIENCE_DATA, PROJECTS_DATA } from '@/data';
+import type { LogMessage } from '@/types/portfolio';
 
 interface TerminalProps {
   onClose: () => void;
@@ -40,7 +40,10 @@ export default function Terminal({ onClose, onContactTrigger }: TerminalProps) {
 
   const handleCommand = (cmd: string) => {
     const trimmed = cmd.trim().toLowerCase();
-    if (!trimmed) return;
+
+    if (!trimmed) {
+return;
+}
 
     const newLogs: LogMessage[] = [
       ...history,
@@ -85,7 +88,7 @@ ${ABOUT_DATA.competencies.map(c => ` * ${c}`).join('\n')}`,
         });
         break;
 
-      case 'exp':
+      case 'exp': {
         const expText = EXPERIENCE_DATA.map(item => (
           `[ ${item.role} ]
   Company : ${item.company}
@@ -103,6 +106,7 @@ ${expText}`,
           timestamp: new Date().toLocaleTimeString()
         });
         break;
+      }
 
       case 'stack':
         newLogs.push({
@@ -127,7 +131,7 @@ Infrastructure & Tools:
         });
         break;
 
-      case 'projects':
+      case 'projects': {
         const projText = PROJECTS_DATA.map(p => (
           `[ ${p.title} ]
   Status : ${p.status.toUpperCase()}
@@ -144,6 +148,7 @@ ${projText}`,
           timestamp: new Date().toLocaleTimeString()
         });
         break;
+      }
 
       case 'sysconfig':
         newLogs.push({
@@ -183,6 +188,7 @@ frameworks:
       case 'clear':
         setHistory([]);
         setInput('');
+
         return;
 
       default:
@@ -202,6 +208,7 @@ frameworks:
       handleCommand(input);
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
+
       if (commandHistory.length > 0 && historyIndex < commandHistory.length - 1) {
         const nextIdx = historyIndex + 1;
         setHistoryIndex(nextIdx);
@@ -209,6 +216,7 @@ frameworks:
       }
     } else if (e.key === 'ArrowDown') {
       e.preventDefault();
+
       if (historyIndex > 0) {
         const nextIdx = historyIndex - 1;
         setHistoryIndex(nextIdx);

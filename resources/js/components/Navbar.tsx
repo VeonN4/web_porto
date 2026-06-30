@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import React, { useState } from 'react';
 
 interface NavbarProps {
   activeSection: string;
@@ -23,6 +23,7 @@ export default function Navbar({ activeSection, setActiveSection, onContactClick
     setIsOpen(false);
     setActiveSection(id);
     const element = document.getElementById(id);
+
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -43,6 +44,7 @@ export default function Navbar({ activeSection, setActiveSection, onContactClick
         <div className="hidden md:flex gap-8 items-center font-semibold text-xs tracking-wider">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
+
             return (
               <button
                 key={item.id}
@@ -103,6 +105,7 @@ export default function Navbar({ activeSection, setActiveSection, onContactClick
           <div className="flex flex-col gap-4 font-semibold text-sm tracking-wider">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
+
               return (
                 <button
                   key={item.id}

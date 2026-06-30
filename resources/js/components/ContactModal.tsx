@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
 import { X, Send, Terminal, CheckCircle2, ShieldCheck } from 'lucide-react';
+import React, { useState } from 'react';
 
 interface ContactModalProps {
   onClose: () => void;
@@ -21,13 +21,18 @@ export default function ContactModal({ onClose }: ContactModalProps) {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    if (error) setError('');
+
+    if (error) {
+setError('');
+}
   };
 
   const executeTransmission = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (!formData.name || !formData.email || !formData.message) {
       setError('Please provide name, email, and transmission payload.');
+
       return;
     }
 

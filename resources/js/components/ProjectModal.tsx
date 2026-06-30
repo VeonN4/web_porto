@@ -1,6 +1,6 @@
+import { X, ExternalLink, Code, Terminal, CheckCircle } from 'lucide-react';
 import React from 'react';
-import { X, ExternalLink, Github, Terminal, CheckCircle } from 'lucide-react';
-import { Project } from '../types';
+import type { Project } from '@/types/portfolio';
 
 interface ProjectModalProps {
   project: Project;
@@ -73,7 +73,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     className="border border-outline-variant hover:border-white p-2.5 text-on-surface-variant hover:text-white transition-colors flex items-center justify-center"
                     title="Source Code"
                   >
-                    <Github className="h-4 w-4" />
+                    <Code className="h-4 w-4" />
                   </a>
                 )}
                 <a 
