@@ -12,7 +12,7 @@ export default function Navbar({ activeSection, setActiveSection, onContactClick
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { label: 'HERO', id: 'hero' },
+    { label: 'OVERVIEW', id: 'hero' },
     { label: 'ABOUT', id: 'about' },
     { label: 'EXP', id: 'exp' },
     { label: 'STACK', id: 'stack' },
@@ -32,12 +32,12 @@ export default function Navbar({ activeSection, setActiveSection, onContactClick
   return (
     <nav className="bg-background border-b border-outline-variant sticky top-0 z-50 transition-colors duration-200">
       <div className="flex justify-between items-center w-full px-4 md:px-12 py-4 max-w-7xl mx-auto">
-        <button 
-          onClick={() => handleNavClick('hero')} 
+        <button
+          onClick={() => handleNavClick('hero')}
           className="font-headline-md text-xl font-bold text-white tracking-tight hover:opacity-80 transition-opacity"
           id="nav-logo"
         >
-          ALEX_DEV
+            Veonise
         </button>
 
         {/* Desktop Menu */}
@@ -63,15 +63,15 @@ export default function Navbar({ activeSection, setActiveSection, onContactClick
         </div>
 
         <div className="hidden md:flex gap-4 items-center">
-          <button 
-            onClick={onTerminalClick} 
+          <button
+            onClick={onTerminalClick}
             className="border border-outline-variant px-4 py-2 text-on-surface-variant hover:text-white hover:border-white text-xs uppercase tracking-wider transition-colors duration-200"
             id="nav-terminal-btn"
           >
             TERMINAL
           </button>
-          <button 
-            onClick={onContactClick} 
+          <button
+            onClick={onContactClick}
             className="brutalist-btn text-xs px-4 py-2 uppercase tracking-wider font-semibold"
             id="nav-contact-btn"
           >
@@ -81,8 +81,8 @@ export default function Navbar({ activeSection, setActiveSection, onContactClick
 
         {/* Mobile Menu Button */}
         <div className="flex md:hidden gap-3 items-center">
-          <button 
-            onClick={onTerminalClick} 
+          <button
+            onClick={onTerminalClick}
             className="border border-outline-variant px-3 py-1.5 text-on-surface-variant hover:text-white text-xs uppercase tracking-wider"
             id="mobile-nav-terminal"
           >

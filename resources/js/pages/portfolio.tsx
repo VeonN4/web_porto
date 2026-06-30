@@ -61,9 +61,9 @@ obs.observer.unobserve(obs.el);
     <>
       <Head title="Portfolio" />
       <div className="min-h-screen flex flex-col bg-[#09090B] text-white selection:bg-white selection:text-black bg-grid antialiased relative">
-        
+
         {/* Top Navbar */}
-        <Navbar 
+        <Navbar
           activeSection={activeSection}
           setActiveSection={setActiveSection}
           onContactClick={() => setIsContactOpen(true)}
@@ -72,7 +72,7 @@ obs.observer.unobserve(obs.el);
 
         {/* Main Content Canvas */}
         <main className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-12 md:py-20 flex flex-col gap-24 md:gap-32">
-          
+
           {/* HERO SECTION */}
           <section id="hero" className="w-full min-h-[70vh] flex flex-col justify-center py-8 scroll-mt-24">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
@@ -84,7 +84,7 @@ obs.observer.unobserve(obs.el);
                     {hero.tagline}
                   </span>
                 </div>
-                
+
                 <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight m-0 uppercase font-sans select-none">
                   {hero.headline}
                   <br />
@@ -96,7 +96,7 @@ obs.observer.unobserve(obs.el);
                 </p>
 
                 <div className="flex flex-wrap gap-4 mt-4">
-                  <button 
+                  <button
                     onClick={() => {
                       const el = document.getElementById('projects');
                       el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -107,14 +107,14 @@ obs.observer.unobserve(obs.el);
                     <span>VIEW PROJECTS</span>
                     <ArrowRight className="h-4 w-4" />
                   </button>
-                  <a 
-                    href="https://github.com" 
-                    target="_blank" 
+                  <a
+                    href="https://github.com"
+                    target="_blank"
                     rel="noreferrer"
                     className="border border-outline-variant hover:border-white text-white text-xs px-6 py-3 uppercase tracking-wider font-semibold transition-colors flex items-center gap-2"
                     id="hero-github-btn"
                   >
-                    <Code className="h-4 w-4" />
+                    <svg className="h-4 w-4 fill-white" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
                     <span>GITHUB</span>
                   </a>
                 </div>
@@ -187,12 +187,12 @@ obs.observer.unobserve(obs.el);
 
               {/* Configuration Sidebar */}
               <aside className="md:col-span-4 flex flex-col gap-6">
-                <div className="brutalist-border p-6 bg-[#18181B] flex flex-col gap-6 h-full">
+                <div className="brutalist-border p-6 bg-[#18181B] flex flex-col gap-6 h-fit">
                   <div className="flex items-center gap-1.5 border-b border-outline-variant pb-4">
                     <div className="w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
                     <div className="w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
                     <span className="text-xs font-mono text-on-surface-variant ml-2 font-bold select-none">
-                      sys_config.yml
+                      config.yml
                     </span>
                   </div>
 
@@ -208,15 +208,6 @@ obs.observer.unobserve(obs.el);
                     {about.sys_config_frameworks.map((fw) => (
                       <p key={fw} className="pl-4">&nbsp;&nbsp;- &quot;[ {fw} ]&quot;</p>
                     ))}
-                  </div>
-
-                  <div className="mt-6 pt-6 border-t border-outline-variant">
-                    <img 
-                      src={about.concrete_image} 
-                      alt="Brutalist concrete architecture" 
-                      className="w-full aspect-square object-cover grayscale opacity-75 hover:opacity-100 transition-opacity duration-300 brutalist-border"
-                      referrerPolicy="no-referrer"
-                    />
                   </div>
                 </div>
               </aside>
@@ -245,8 +236,8 @@ obs.observer.unobserve(obs.el);
                   const isEven = index % 2 === 0;
 
                   return (
-                    <div 
-                      key={item.id} 
+                    <div
+                      key={item.id}
                       className={`relative flex flex-col md:flex-row items-center justify-between w-full ${
                         isEven ? '' : 'md:flex-row-reverse'
                       }`}
@@ -306,7 +297,7 @@ obs.observer.unobserve(obs.el);
 
             {/* Bento Grid Layout */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-              
+
               {/* Frontend Core items */}
               <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {techStacks.filter(t => t.type === 'core').map((core) => (
@@ -415,7 +406,7 @@ obs.observer.unobserve(obs.el);
             {/* Grid list of project articles */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {projects.map((project) => (
-                <article 
+                <article
                   key={project.id}
                   onClick={() => setSelectedProject(project)}
                   className="brutalist-border p-6 flex flex-col gap-6 group hover:bg-[#18181B] bg-[#0e0e10]/40 transition-colors duration-300 cursor-pointer"
@@ -430,8 +421,8 @@ obs.observer.unobserve(obs.el);
 
                   {/* Cover Image Wrapper */}
                   <div className="w-full h-48 brutalist-border relative overflow-hidden group-hover:border-white transition-colors duration-300">
-                    <img 
-                      src={project.image_url} 
+                    <img
+                      src={project.image_url}
                       alt={project.title}
                       className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-500"
                       referrerPolicy="no-referrer"
@@ -460,7 +451,7 @@ obs.observer.unobserve(obs.el);
           {/* TERMINAL FOOTER LOGO */}
           <section className="mt-8 border-t border-outline-variant pt-8 text-on-surface-variant font-mono text-xs opacity-60 flex justify-between items-center select-none">
             <span>&gt; ./fetch_history.sh --verbose</span>
-            <button 
+            <button
               onClick={() => setIsTerminalOpen(true)}
               className="text-white hover:underline cursor-pointer flex items-center gap-1.5 font-bold"
             >
@@ -479,15 +470,15 @@ obs.observer.unobserve(obs.el);
             </div>
             <div className="flex gap-6">
               <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-white hover:underline transition-all active:scale-95 flex items-center gap-1.5">
-                <Code className="h-3.5 w-3.5" />
+                <svg className="h-4 w-4 fill-white" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
                 GITHUB
               </a>
               <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-white hover:underline transition-all active:scale-95 flex items-center gap-1.5">
                 <Link className="h-3.5 w-3.5" />
                 LINKEDIN
               </a>
-              <button 
-                onClick={() => setIsTerminalOpen(true)} 
+              <button
+                onClick={() => setIsTerminalOpen(true)}
                 className="hover:text-white hover:underline transition-all text-left"
               >
                 SOURCE_CONSOLE
@@ -498,8 +489,8 @@ obs.observer.unobserve(obs.el);
 
         {/* Floating System Console Terminal */}
         {isTerminalOpen && (
-          <Terminal 
-            onClose={() => setIsTerminalOpen(false)} 
+          <Terminal
+            onClose={() => setIsTerminalOpen(false)}
             onContactTrigger={() => {
               setIsTerminalOpen(false);
               setIsContactOpen(true);
@@ -517,9 +508,9 @@ obs.observer.unobserve(obs.el);
 
         {/* Project details specification overlays */}
         {selectedProject && (
-          <ProjectModal 
-            project={selectedProject} 
-            onClose={() => setSelectedProject(null)} 
+          <ProjectModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
           />
         )}
 
