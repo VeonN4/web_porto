@@ -1,6 +1,6 @@
 import { Head } from '@inertiajs/react';
 import { ArrowRight, Code, Terminal as TerminalIcon, Link, Cpu, Database, Braces, Palette, Globe, HardDrive } from 'lucide-react';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ContactModal from '@/components/ContactModal';
 import Navbar from '@/components/Navbar';
 import ProjectModal from '@/components/ProjectModal';

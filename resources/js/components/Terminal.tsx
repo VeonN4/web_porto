@@ -1,5 +1,5 @@
 import { Terminal as TerminalIcon, X, Minimize2, Maximize2, ShieldAlert } from 'lucide-react';
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import type { AboutSettings, ExperienceItem, Project, LogMessage } from '@/types/portfolio';
 
 interface TerminalProps {

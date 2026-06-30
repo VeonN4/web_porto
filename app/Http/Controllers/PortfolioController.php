@@ -9,7 +9,7 @@ use App\Models\Project;
 use App\Models\TechStack;
 use Inertia\Inertia;
 
-class PortfolioController extends Controller
+class PortfolioController
 {
     public function index()
     {

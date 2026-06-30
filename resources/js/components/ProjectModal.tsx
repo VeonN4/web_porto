@@ -1,5 +1,4 @@
 import { X, ExternalLink, Code, Terminal, CheckCircle } from 'lucide-react';
-import React from 'react';
 import type { Project } from '@/types/portfolio';
 
 interface ProjectModalProps {

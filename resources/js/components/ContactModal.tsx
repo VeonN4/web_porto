@@ -1,5 +1,5 @@
 import { X, Send, Terminal, CheckCircle2, ShieldCheck } from 'lucide-react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 interface ContactModalProps {
   onClose: () => void;
