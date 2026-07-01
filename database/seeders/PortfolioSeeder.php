@@ -7,12 +7,22 @@ use App\Models\Experience;
 use App\Models\HeroSettings;
 use App\Models\Project;
 use App\Models\TechStack;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class PortfolioSeeder extends Seeder
 {
     public function run(): void
     {
+        User::firstOrCreate(
+            ['email' => 'admin@example.com'],
+            [
+                'name' => 'Admin',
+                'password' => Hash::make('admin'),
+            ]
+        );
+
         HeroSettings::create([
             'headline' => 'FUTURE',
             'subheadline' => 'ENGINEER',
