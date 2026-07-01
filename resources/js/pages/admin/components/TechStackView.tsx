@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { router } from '@inertiajs/react';
 import { Plus, Trash2, Save, Check } from 'lucide-react';
+import { useState } from 'react';
 import type { TechStackItem } from '@/types/portfolio';
 
 interface Props {
@@ -37,7 +37,11 @@ export default function TechStackView({ techStacks, setTechStacks, onCommit }: P
 
     const handleAdd = (e: React.FormEvent) => {
         e.preventDefault();
-        if (!newName.trim()) return;
+
+        if (!newName.trim()) {
+return;
+}
+
         router.post(
             '/admin/tech-stacks',
             { type: newType, name: newName.trim() },
@@ -45,7 +49,11 @@ export default function TechStackView({ techStacks, setTechStacks, onCommit }: P
                 preserveScroll: true,
                 onSuccess: (page) => {
                     const created = (page.props as { flash?: { techStack?: TechStackItem } }).flash?.techStack;
-                    if (created) setTechStacks((prev) => [...prev, created]);
+
+                    if (created) {
+setTechStacks((prev) => [...prev, created]);
+}
+
                     onCommit(`Registered "${newName}" in stack`);
                     setNewName('');
                     setShowAddForm(false);
@@ -139,6 +147,7 @@ export default function TechStackView({ techStacks, setTechStacks, onCommit }: P
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl text-left">
                 {(types.length > 0 ? types : Object.keys(TYPE_LABELS)).map((type) => {
                     const items = techStacks.filter((t) => t.type === type);
+
                     return (
                         <div
                             key={type}

@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { router } from '@inertiajs/react';
 import { Search, Plus, Trash2, Edit, X, FolderGit2 } from 'lucide-react';
+import { useState } from 'react';
 import type { Project } from '@/types/portfolio';
 
 interface Props {
@@ -28,7 +28,11 @@ export default function ProjectsView({ projects, setProjects, onCommit }: Props)
 
     const handleCreate = (e: React.FormEvent) => {
         e.preventDefault();
-        if (!newTitle.trim()) return;
+
+        if (!newTitle.trim()) {
+return;
+}
+
         const tags = newTagsInput.split(',').map((t) => t.trim()).filter(Boolean);
         router.post(
             '/admin/projects',
@@ -37,7 +41,11 @@ export default function ProjectsView({ projects, setProjects, onCommit }: Props)
                 preserveScroll: true,
                 onSuccess: (page) => {
                     const created = (page.props as { flash?: { project?: Project } }).flash?.project;
-                    if (created) setProjects((prev) => [created, ...prev]);
+
+                    if (created) {
+setProjects((prev) => [created, ...prev]);
+}
+
                     onCommit(`Created project: "${newTitle.toUpperCase()}"`);
                     setNewTitle(''); setNewDescription(''); setNewTagsInput(''); setIsAdding(false);
                 },
@@ -54,7 +62,11 @@ export default function ProjectsView({ projects, setProjects, onCommit }: Props)
                 preserveScroll: true,
                 onSuccess: (page) => {
                     const updated = (page.props as { flash?: { project?: Project } }).flash?.project;
-                    if (updated) setProjects((prev) => prev.map((p) => (p.id === id ? updated : p)));
+
+                    if (updated) {
+setProjects((prev) => prev.map((p) => (p.id === id ? updated : p)));
+}
+
                     onCommit(`Updated project: "${editTitle.toUpperCase()}"`);
                     setEditingId(null);
                 },
@@ -75,6 +87,7 @@ export default function ProjectsView({ projects, setProjects, onCommit }: Props)
     const filteredProjects = projects
         .filter((p) => {
             const q = searchQuery.toLowerCase();
+
             return (
                 (p.title.toLowerCase().includes(q) ||
                     p.description.toLowerCase().includes(q) ||
@@ -106,7 +119,9 @@ export default function ProjectsView({ projects, setProjects, onCommit }: Props)
                 </div>
                 <div className="flex gap-2 font-mono text-xs">
                     <button
-                        onClick={() => { const i = allTags.indexOf(filterTag); setFilterTag(allTags[(i + 1) % allTags.length]); }}
+                        onClick={() => {
+ const i = allTags.indexOf(filterTag); setFilterTag(allTags[(i + 1) % allTags.length]); 
+}}
                         className="px-3.5 py-2 border border-white/10 text-white/40 hover:text-white hover:border-white/40 transition-colors uppercase cursor-pointer"
                     >
                         Filter: {filterTag}
@@ -201,6 +216,7 @@ export default function ProjectsView({ projects, setProjects, onCommit }: Props)
                 ) : (
                     filteredProjects.map((p) => {
                         const isEditing = editingId === p.id;
+
                         return (
                             <div
                                 key={p.id}

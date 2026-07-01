@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { router } from '@inertiajs/react';
 import { Save, Check, MapPin, Plus, Trash2 } from 'lucide-react';
+import { useState } from 'react';
 import type { AboutSettings } from '@/types/portfolio';
 
 interface Props {
@@ -113,7 +113,11 @@ export default function AboutMeView({ aboutData, setAboutData, onCommit }: Props
                                     onKeyDown={(e) => {
                                         if (e.key === 'Enter') {
                                             e.preventDefault();
-                                            if (!newCompetency.trim()) return;
+
+                                            if (!newCompetency.trim()) {
+return;
+}
+
                                             setForm((f) => ({ ...f, competencies: [...f.competencies, newCompetency.trim()] }));
                                             setNewCompetency('');
                                         }
@@ -124,7 +128,10 @@ export default function AboutMeView({ aboutData, setAboutData, onCommit }: Props
                                 <button
                                     type="button"
                                     onClick={() => {
-                                        if (!newCompetency.trim()) return;
+                                        if (!newCompetency.trim()) {
+return;
+}
+
                                         setForm((f) => ({ ...f, competencies: [...f.competencies, newCompetency.trim()] }));
                                         setNewCompetency('');
                                     }}

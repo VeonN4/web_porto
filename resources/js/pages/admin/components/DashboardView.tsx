@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { router } from '@inertiajs/react';
 import { FolderOpen, Cpu, Terminal as TerminalIcon, Loader2, Plus, Server, Database, Briefcase, FileCode, Check } from 'lucide-react';
+import { useState } from 'react';
 import type { SystemLog } from '@/types/portfolio';
 
 interface Props {
@@ -45,7 +45,11 @@ export default function DashboardView({
 
     const handleAddProject = (e: React.FormEvent) => {
         e.preventDefault();
-        if (!projTitle.trim()) return;
+
+        if (!projTitle.trim()) {
+return;
+}
+
         const tags = projTags.split(',').map(t => t.trim()).filter(Boolean);
         router.post(
             '/admin/projects',
@@ -63,7 +67,11 @@ export default function DashboardView({
 
     const handleAddExperience = (e: React.FormEvent) => {
         e.preventDefault();
-        if (!expRole.trim()) return;
+
+        if (!expRole.trim()) {
+return;
+}
+
         router.post(
             '/admin/experiences',
             { role: expRole.trim(), company: expCompany.trim(), period: expPeriod.trim(), bullets: ['New entry created via dashboard'], technologies: [] },
@@ -80,7 +88,11 @@ export default function DashboardView({
 
     const handleAddTech = (e: React.FormEvent) => {
         e.preventDefault();
-        if (!techName.trim()) return;
+
+        if (!techName.trim()) {
+return;
+}
+
         router.post(
             '/admin/tech-stacks',
             { name: techName.trim(), type: techType },

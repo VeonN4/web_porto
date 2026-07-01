@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { router } from '@inertiajs/react';
 import { Plus, Trash2, Check, List, Save, PlusCircle, AlertCircle } from 'lucide-react';
+import { useState } from 'react';
 import type { ExperienceItem } from '@/types/portfolio';
 
 interface Props {
@@ -20,7 +20,11 @@ export default function ExperienceView({ experienceNodes, setExperienceNodes, on
                 preserveScroll: true,
                 onSuccess: (page) => {
                     const newExp = (page.props as { flash?: { experience?: ExperienceItem } }).flash?.experience;
-                    if (newExp) setExperienceNodes((prev) => [newExp, ...prev]);
+
+                    if (newExp) {
+setExperienceNodes((prev) => [newExp, ...prev]);
+}
+
                     onCommit('Added new experience position');
                 },
             },
@@ -61,9 +65,13 @@ export default function ExperienceView({ experienceNodes, setExperienceNodes, on
     const updateBullet = (id: number, index: number, value: string) =>
         setExperienceNodes((prev) =>
             prev.map((n) => {
-                if (n.id !== id) return n;
+                if (n.id !== id) {
+return n;
+}
+
                 const b = [...n.bullets];
                 b[index] = value;
+
                 return { ...n, bullets: b };
             }),
         );

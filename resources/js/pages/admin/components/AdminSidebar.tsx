@@ -38,6 +38,7 @@ export default function AdminSidebar({ currentTab, setCurrentTab, onLogout, avat
                     {navItems.map((item) => {
                         const Icon = item.icon;
                         const isActive = currentTab === item.id;
+
                         return (
                             <li key={item.id}>
                                 <button

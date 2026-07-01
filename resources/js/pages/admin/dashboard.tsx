@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { LayoutDashboard, Terminal as TerminalIcon, LogOut, FolderCode } from 'lucide-react';
 import { router } from '@inertiajs/react';
+import { LayoutDashboard, Terminal as TerminalIcon, LogOut, FolderCode } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import type {
     HeroSettings,
     AboutSettings,
@@ -9,13 +9,13 @@ import type {
     Project,
     SystemLog,
 } from '@/types/portfolio';
+import AboutMeView from './components/AboutMeView';
 import AdminSidebar from './components/AdminSidebar';
 import DashboardView from './components/DashboardView';
-import HeroConfigView from './components/HeroConfigView';
 import ExperienceView from './components/ExperienceView';
-import TechStackView from './components/TechStackView';
-import AboutMeView from './components/AboutMeView';
+import HeroConfigView from './components/HeroConfigView';
 import ProjectsView from './components/ProjectsView';
+import TechStackView from './components/TechStackView';
 
 interface Props {
     hero: HeroSettings;
@@ -37,12 +37,24 @@ export default function AdminDashboard({ hero, about, experiences, projects, tec
     const [techStackItems, setTechStackItems] = useState<TechStackItem[]>(techStacks);
 
     // Keep state synced with Inertia props changes
-    useEffect(() => { setHeroData(hero); }, [hero]);
-    useEffect(() => { setAboutData(about); }, [about]);
-    useEffect(() => { setExperienceNodes(experiences); }, [experiences]);
-    useEffect(() => { setProjectList(projects); }, [projects]);
-    useEffect(() => { setTechStackItems(techStacks); }, [techStacks]);
-    useEffect(() => { setSystemLogs(logs || []); }, [logs]);
+    useEffect(() => {
+ setHeroData(hero); 
+}, [hero]);
+    useEffect(() => {
+ setAboutData(about); 
+}, [about]);
+    useEffect(() => {
+ setExperienceNodes(experiences); 
+}, [experiences]);
+    useEffect(() => {
+ setProjectList(projects); 
+}, [projects]);
+    useEffect(() => {
+ setTechStackItems(techStacks); 
+}, [techStacks]);
+    useEffect(() => {
+ setSystemLogs(logs || []); 
+}, [logs]);
 
     const addLog = (action: string, message: string) => {
         router.post('/admin/logs', { action, message }, { preserveScroll: true });

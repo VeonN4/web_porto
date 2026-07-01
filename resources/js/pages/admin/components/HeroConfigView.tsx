@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { router } from '@inertiajs/react';
 import { Save, Check, Plus, Trash2 } from 'lucide-react';
+import { useState } from 'react';
 import type { HeroSettings } from '@/types/portfolio';
 
 interface Props {
@@ -29,13 +29,19 @@ export default function HeroConfigView({ heroData, setHeroData, onCommit }: Prop
     };
 
     const addStatus = () => {
-        if (!newStatus.trim()) return;
+        if (!newStatus.trim()) {
+return;
+}
+
         setForm((f) => ({ ...f, status: [...f.status, newStatus.trim()] }));
         setNewStatus('');
     };
 
     const addStack = () => {
-        if (!newStack.trim()) return;
+        if (!newStack.trim()) {
+return;
+}
+
         setForm((f) => ({ ...f, core_stack: [...f.core_stack, newStack.trim()] }));
         setNewStack('');
     };

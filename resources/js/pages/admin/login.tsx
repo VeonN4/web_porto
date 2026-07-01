@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { useForm } from '@inertiajs/react';
 import { Lock, ShieldAlert } from 'lucide-react';
+import { useState } from 'react';
 
 export default function AdminLogin() {
     const [typingDone] = useState(true);
