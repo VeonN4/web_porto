@@ -20,13 +20,6 @@ export default function AdminSidebar({ currentTab, setCurrentTab, onLogout, avat
     return (
         <aside className="hidden md:flex flex-col h-screen w-64 border-r border-white/10 bg-[#0a0a0a] py-8 px-6 sticky top-0 shrink-0 z-40">
             <div className="mb-12 flex flex-col gap-4">
-                <div className="w-12 h-12 border border-white/20 overflow-hidden flex items-center justify-center bg-[#1a1a1a]">
-                    {avatarUrl ? (
-                        <img alt="Admin Avatar" className="object-cover w-full h-full grayscale opacity-80" src={avatarUrl} />
-                    ) : (
-                        <span className="text-white/40 font-mono text-xs">OS</span>
-                    )}
-                </div>
                 <div>
                     <h1 className="text-xl font-bold text-white tracking-tight uppercase">DEV_ROOT</h1>
                     <p className="text-xs text-white/40 uppercase font-mono tracking-widest mt-1">v1.0.0-stable</p>
