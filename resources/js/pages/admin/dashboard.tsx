@@ -1,6 +1,6 @@
 import { router } from '@inertiajs/react';
 import { LayoutDashboard, Terminal as TerminalIcon, LogOut, FolderCode } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import type {
     HeroSettings,
     AboutSettings,
@@ -28,33 +28,54 @@ interface Props {
 
 export default function AdminDashboard({ hero, about, experiences, projects, techStacks, logs }: Props) {
     const [currentTab, setCurrentTab] = useState('dashboard');
-    const [systemLogs, setSystemLogs] = useState<SystemLog[]>(logs || []);
 
+    const [prevHero, setPrevHero] = useState<HeroSettings>(hero);
     const [heroData, setHeroData] = useState<HeroSettings>(hero);
+
+    if (hero !== prevHero) {
+        setPrevHero(hero);
+        setHeroData(hero);
+    }
+
+    const [prevAbout, setPrevAbout] = useState<AboutSettings>(about);
     const [aboutData, setAboutData] = useState<AboutSettings>(about);
+
+    if (about !== prevAbout) {
+        setPrevAbout(about);
+        setAboutData(about);
+    }
+
+    const [prevExperiences, setPrevExperiences] = useState<ExperienceItem[]>(experiences);
     const [experienceNodes, setExperienceNodes] = useState<ExperienceItem[]>(experiences);
+
+    if (experiences !== prevExperiences) {
+        setPrevExperiences(experiences);
+        setExperienceNodes(experiences);
+    }
+
+    const [prevProjects, setPrevProjects] = useState<Project[]>(projects);
     const [projectList, setProjectList] = useState<Project[]>(projects);
+
+    if (projects !== prevProjects) {
+        setPrevProjects(projects);
+        setProjectList(projects);
+    }
+
+    const [prevTechStacks, setPrevTechStacks] = useState<TechStackItem[]>(techStacks);
     const [techStackItems, setTechStackItems] = useState<TechStackItem[]>(techStacks);
 
-    // Keep state synced with Inertia props changes
-    useEffect(() => {
- setHeroData(hero); 
-}, [hero]);
-    useEffect(() => {
- setAboutData(about); 
-}, [about]);
-    useEffect(() => {
- setExperienceNodes(experiences); 
-}, [experiences]);
-    useEffect(() => {
- setProjectList(projects); 
-}, [projects]);
-    useEffect(() => {
- setTechStackItems(techStacks); 
-}, [techStacks]);
-    useEffect(() => {
- setSystemLogs(logs || []); 
-}, [logs]);
+    if (techStacks !== prevTechStacks) {
+        setPrevTechStacks(techStacks);
+        setTechStackItems(techStacks);
+    }
+
+    const [prevLogs, setPrevLogs] = useState<SystemLog[] | undefined>(logs);
+    const [systemLogs, setSystemLogs] = useState<SystemLog[]>(logs || []);
+
+    if (logs !== prevLogs) {
+        setPrevLogs(logs);
+        setSystemLogs(logs || []);
+    }
 
     const addLog = (action: string, message: string) => {
         router.post('/admin/logs', { action, message }, { preserveScroll: true });
@@ -89,7 +110,6 @@ export default function AdminDashboard({ hero, about, experiences, projects, tec
                         techStackCount={techStackItems.length}
                         totalExperiences={experienceNodes.length}
                         logs={systemLogs}
-                        setLogs={setSystemLogs}
                         onCommit={(msg) => addLog('COMMIT', msg)}
                     />
                 )}

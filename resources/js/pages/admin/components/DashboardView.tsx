@@ -1,5 +1,5 @@
 import { router } from '@inertiajs/react';
-import { FolderOpen, Cpu, Terminal as TerminalIcon, Loader2, Plus, Server, Database, Briefcase, FileCode, Check } from 'lucide-react';
+import { FolderOpen, Cpu, Terminal as TerminalIcon, Loader2, Server, Database, Briefcase, FileCode, Check } from 'lucide-react';
 import { useState } from 'react';
 import type { SystemLog } from '@/types/portfolio';
 
@@ -8,7 +8,6 @@ interface Props {
     techStackCount: number;
     totalExperiences: number;
     logs: SystemLog[];
-    setLogs: React.Dispatch<React.SetStateAction<SystemLog[]>>;
     onCommit: (msg: string) => void;
 }
 
@@ -17,7 +16,6 @@ export default function DashboardView({
     techStackCount,
     totalExperiences,
     logs,
-    setLogs,
     onCommit,
 }: Props) {
     const [isClearingCache, setIsClearingCache] = useState(false);
@@ -37,11 +35,6 @@ export default function DashboardView({
 
     const [techName, setTechName] = useState('');
     const [techType, setTechType] = useState('core');
-
-    const addLog = (action: string, message: string) => {
-        const timeStr = new Date().toTimeString().split(' ')[0];
-        setLogs((prev) => [{ id: `log-${Date.now()}`, time: timeStr, action, message }, ...prev]);
-    };
 
     const handleAddProject = (e: React.FormEvent) => {
         e.preventDefault();
