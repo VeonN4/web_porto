@@ -1,4 +1,4 @@
-import { useForm } from '@inertiajs/react';
+import { useForm, router } from '@inertiajs/react';
 import { Lock, ShieldAlert } from 'lucide-react';
 
 export default function AdminLogin() {
@@ -91,7 +91,6 @@ export default function AdminLogin() {
                         {processing ? 'AUTHENTICATING...' : 'Decrypt & Access'}
                     </button>
                 </form>
-
             </div>
         </div>
     );
