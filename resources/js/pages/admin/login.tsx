@@ -92,11 +92,6 @@ export default function AdminLogin() {
                     </button>
                 </form>
 
-                <div className="mt-6 text-center text-[10px] text-white/30 uppercase">
-                    Default:{' '}
-                    <span className="text-white/60 font-bold">admin@example.com</span> /{' '}
-                    <span className="text-white/60 font-bold">admin</span>
-                </div>
             </div>
         </div>
     );
