@@ -8,10 +8,11 @@ use App\Models\HeroSettings;
 use App\Models\Project;
 use App\Models\TechStack;
 use Inertia\Inertia;
+use Inertia\Response as InertiaResponse;
 
 class PortfolioController
 {
-    public function index()
+    public function index(): InertiaResponse
     {
         return Inertia::render('portfolio', [
             'hero' => HeroSettings::first(),
