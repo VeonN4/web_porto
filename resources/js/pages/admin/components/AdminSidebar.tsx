@@ -16,12 +16,12 @@ const navItems = [
     { id: 'projects', label: 'Projects', icon: FolderCode },
 ];
 
-export default function AdminSidebar({ currentTab, setCurrentTab, onLogout, avatarUrl }: Props) {
+export default function AdminSidebar({ currentTab, setCurrentTab, onLogout }: Props) {
     return (
         <aside className="hidden md:flex flex-col h-screen w-64 border-r border-white/10 bg-[#0a0a0a] py-8 px-6 sticky top-0 shrink-0 z-40">
             <div className="mb-12 flex flex-col gap-4">
                 <div>
-                    <h1 className="text-xl font-bold text-white tracking-tight uppercase">DEV_ROOT</h1>
+                    <h1 className="text-xl font-bold text-white tracking-tight uppercase">ADMIN PANEl</h1>
                     <p className="text-xs text-white/40 uppercase font-mono tracking-widest mt-1">v1.0.0-stable</p>
                 </div>
             </div>

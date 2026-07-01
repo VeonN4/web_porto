@@ -1,4 +1,4 @@
-import { useForm, router } from '@inertiajs/react';
+import { useForm } from '@inertiajs/react';
 import { Lock, ShieldAlert } from 'lucide-react';
 
 export default function AdminLogin() {
